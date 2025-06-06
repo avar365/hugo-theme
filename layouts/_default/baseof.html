@@ -14,30 +14,33 @@
   {{ with .OutputFormats.Get "rss" -}}
   {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
   {{ end -}}
+  
+  <link rel="stylesheet" href="/css/styles.css">
 
-  {{- partial "style.html" . -}}
-
-  <!-- A partial to be overwritten by the user.
-  Simply place a custom_head.html into
-  your local /layouts/partials-directory -->
   {{- partial "custom_head.html" . -}}
 </head>
 
 <body>
-  <header>
-    {{- partial "header.html" . -}}
-  </header>
-  <main>
-    {{- block "main" . }}{{- end }}
-  </main>
-  <footer>
-    {{- partial "footer.html" . -}}
-  </footer>
+  <div class="site-header">
+    <div class="container header-inner">
+      {{ partial "header.html" . }}
+    </div>
+  </div>
 
-  <!-- A partial to be overwritten by the user.
-  Simply place a custom_body.html into
-  your local /layouts/partials-directory -->
-  {{- partial "custom_body.html" . -}}
+  <main>
+    <div class="container">
+      {{ block "main" . }}{{ end }}
+    </div>
+  </main>
+
+  <div class="site-footer">
+    <div class="container footer-inner">
+      {{ partial "footer.html" . }}
+    </div>
+  </div>
+
+  {{ partial "custom_body.html" . }}
 </body>
+
 
 </html>

@@ -1,4 +1,13 @@
-<a href="{{ "" | relURL }}" class="title">
-  <h2>{{ .Site.Title }}</h2>
-</a>
-<nav>{{- partial "nav.html" . -}}</nav>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="{{ "/" | relURL }}" class="site-title">
+      {{ .Site.Title }}
+    </a>
+<input type="checkbox" id="menu-toggle" class="menu-toggle">
+<label for="menu-toggle" class="burger">&#9776;</label>
+
+<nav class="main-nav">
+  {{ partial "nav.html" . }}
+</nav>
+  </div>
+</header>

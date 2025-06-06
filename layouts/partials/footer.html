@@ -1,1 +1,17 @@
-{{ if not (.Param "hideMadeWithLine") }}Made with <a href="https://github.com/janraasch/hugo-bearblog/">Hugo ʕ•ᴥ•ʔ Bear</a>{{ end }}
+<footer>
+  <div class="footer-inner">
+    <nav>
+      {{ range site.Menus.footer }}
+      <a href="{{ .URL | relURL }}">{{ .Name }}</a>
+      {{ end }}
+    </nav>
+
+    {{ partial "social-icons.html" . }}
+
+    <div style="margin-top: 1rem;">
+      {{ if not (.Param "hideMadeWithLine") }}
+      Made with <a href="https://github.com/janraasch/hugo-bearblog/">Hugo ʕ•ᴥ•ʔ Bear</a>
+      {{ end }}
+    </div>
+  </div>
+</footer>
