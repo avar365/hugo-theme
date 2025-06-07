@@ -1,0 +1,17 @@
+{{ define "main" }}
+<h2 style="text-align: center; margin-top: 0;">{{ .Title }}</h2>
+
+<ul class="publication-list">
+    {{ range sort .Pages "Params.year" "desc" }}
+    <li class="publication-entry">
+        <span class="citation">
+            {{ with .Params.authors }}{{ delimit . ", " }}.{{ end }}
+            {{ with .Params.year }} ({{ . }}).{{ end }}
+            <a href="{{ .RelPermalink }}" class="pub-title">{{ .Title }}</a>.
+            {{ with .Params.journal }}<em>{{ . }}</em>.{{ end }}
+            {{ with .Params.doi }}<a href="https://doi.org/{{ . }}" class="doi">doi:{{ . }}</a>{{ end }}
+        </span>
+    </li>
+    {{ end }}
+</ul>
+{{ end }}

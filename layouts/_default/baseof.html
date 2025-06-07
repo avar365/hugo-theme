@@ -12,7 +12,7 @@
       }
     })();
   </script>
-  
+
   <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,10 +23,12 @@
   <meta name="referrer" content="no-referrer-when-downgrade" />
 
   {{ with .OutputFormats.Get "rss" -}}
-  {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+  {{ printf `
+  <link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
   {{ end -}}
-  
+
   <link rel="stylesheet" href="/css/styles.css">
+  <link rel="icon" href="/logo/logo.svg" type="image/svg+xml">
 
   {{- partial "custom_head.html" . -}}
 </head>
@@ -53,6 +55,4 @@
   {{ partial "custom_body.html" . }}
   <script src="/js/theme-toggle.js" defer></script>
 </body>
-
-
 </html>

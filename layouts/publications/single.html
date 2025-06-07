@@ -1,0 +1,42 @@
+{{ define "main" }}
+<article>
+    <h1 style="text-align: center;">{{ .Title }}</h1>
+
+    <table class="pub-meta">
+        {{ with .Params.authors }}
+        <tr>
+            <th>Authors:</th>
+            <td>{{ delimit . ", " }}</td>
+        </tr>
+        {{ end }}
+        {{ with .Params.year }}
+        <tr>
+            <th>Year:</th>
+            <td>{{ . }}</td>
+        </tr>
+        {{ end }}
+        {{ with .Params.journal }}
+        <tr>
+            <th>Journal:</th>
+            <td>{{ . }}</td>
+        </tr>
+        {{ end }}
+        {{ with .Params.doi }}
+        <tr>
+            <th>DOI:</th>
+            <td><a href="https://doi.org/{{ . }}">https://doi.org/{{ . }}</a></td>
+        </tr>
+        {{ end }}
+        {{ with .Params.url_pdf }}
+        <tr>
+            <th>PDF:</th>
+            <td><a href="{{ . }}">Download</a></td>
+        </tr>
+        {{ end }}
+    </table>
+
+    <div class="post-content" style="margin-top: 2rem;">
+        {{ .Content }}
+    </div>
+</article>
+{{ end }}

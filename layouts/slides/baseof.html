@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+
+<head>
+    <script>
+        (function () {
+            const theme = localStorage.getItem("theme");
+            if (theme === "dark") {
+                document.documentElement.classList.add("dark");
+            } else {
+                document.documentElement.classList.remove("dark");
+            }
+        })();
+    </script>
+    <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {{- partial "favicon.html" . -}}
+    <title>{{- block "title" . }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{- end }}</title>
+    
+    {{- partial "seo_tags.html" . -}}
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    {{ with .OutputFormats.Get "rss" -}}
+    {{ printf `
+    <link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+    {{ end -}}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/logo/logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/libs/reveal/reveal.css">
+    <link rel="stylesheet" href="/libs/reveal/theme/black.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" href="/logo/logo.svg" type="image/svg+xml">
+</head>
+
+<body>
+    <div class="site-header">
+        <div class="container header-inner">
+            {{ partial "header.html" . }}
+        </div>
+    </div>
+
+    {{ block "main" . }}{{ end }}
+    
+    <div class="site-footer">
+        <div class="container footer-inner">
+            {{ partial "footer.html" . }}
+        </div>
+    </div>
+
+    <script type="module">
+        import Reveal from '/libs/reveal/reveal.esm.js';
+        import Markdown from '/libs/reveal/plugin/markdown/markdown.esm.js';
+        import Highlight from '/libs/reveal/plugin/highlight/highlight.esm.js';
+        import Notes from '/libs/reveal/plugin/notes/notes.esm.js';
+
+        Reveal.initialize({
+            hash: true,
+            plugins: [Markdown, Highlight, Notes],
+            markdown: {
+                smartypants: true
+            }
+        });
+    </script>
+    <script src="/js/theme-toggle.js" defer></script>
+</body>
+
+</html>

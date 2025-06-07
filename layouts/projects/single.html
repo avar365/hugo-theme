@@ -1,0 +1,21 @@
+{{ define "main" }}
+<article class="project-single">
+    <h1 style="margin-top: 0;">{{ .Title }}</h1>
+
+    <p class="project-date">
+        Last updated: <time datetime="{{ .Lastmod }}">{{ .Lastmod.Format "02.01.2006" }}</time>
+    </p>
+
+    {{ with .Params.tags }}
+    <div class="project-tags">
+        {{ range . }}
+        <span class="tag-badge">#{{ . }}</span>
+        {{ end }}
+    </div>
+    {{ end }}
+
+    <div class="post-content">
+        {{ .Content }}
+    </div>
+</article>
+{{ end }}
