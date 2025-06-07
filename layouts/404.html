@@ -1,6 +1,11 @@
-{{ define "title" }}404{{ end }}
+{{ define "title" }}Seite nicht gefunden 😔{{ end }}
 
 {{ define "main" }}
-<h1>404</h1>
-<h2>ʕノ•ᴥ•ʔノ ︵ ┻━┻</h2>
+<div class="not-found-container">
+    <h1 class="not-found-title">404</h1>
+    <p class="not-found-smiley">😔</p>
+    <p class="not-found-text">Uups! Es sieht so aus, als ob diese Seite ins Leere führt. Die von dir gesuchte Adresse
+        existiert leider nicht.</p>
+    <a href="/" class="button-primary">Zur Startseite</a>
+</div>
 {{ end }}

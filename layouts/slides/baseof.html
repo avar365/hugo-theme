@@ -40,7 +40,9 @@
         </div>
     </div>
 
-    {{ block "main" . }}{{ end }}
+    <div class="page-content-wrapper">
+        {{ block "main" . }}{{ end }}
+    </div>
     
     <div class="site-footer">
         <div class="container footer-inner">

@@ -54,5 +54,23 @@
 
   {{ partial "custom_body.html" . }}
   <script src="/js/theme-toggle.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggleCheckbox = document.getElementById('disclaimer-toggle');
+      const headerLabel = document.querySelector('label[for="disclaimer-toggle"]');
+      const contentDiv = document.getElementById('disclaimer-content');
+
+      if (toggleCheckbox && headerLabel && contentDiv) {
+        // Initialer Zustand setzen
+        headerLabel.setAttribute('aria-expanded', toggleCheckbox.checked);
+        contentDiv.setAttribute('aria-hidden', !toggleCheckbox.checked);
+
+        toggleCheckbox.addEventListener('change', function () {
+          headerLabel.setAttribute('aria-expanded', this.checked);
+          contentDiv.setAttribute('aria-hidden', !this.checked);
+        });
+      }
+    });
+  </script>
 </body>
 </html>
