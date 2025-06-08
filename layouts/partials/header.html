@@ -1,6 +1,6 @@
 <header class="site-header">
   <div class="header-inner">
-    <a href="{{ " /" | relURL }}" class="site-title" style="display: flex; align-items: center; gap: 0.5rem;">
+    <a href="{{ "/" | relURL }}" class="site-title" style="display: flex; align-items: center; gap: 0.5rem;">
       {{ $logoPath := "static/logo/logo.svg" }}
       {{ $fallbackPath := "static/logo/logo_theme.svg" }}
       {{ if fileExists $logoPath }}
