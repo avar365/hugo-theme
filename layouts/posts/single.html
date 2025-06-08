@@ -1,6 +1,9 @@
 {{ define "main" }}
 {{ partial "disclaimer.html" . }}
+
 <div class="container">
-    {{ partial "single-post.html" . }}
+    <article class="post-content">
+        {{ .Content }}
+    </article>
 </div>
 {{ end }}

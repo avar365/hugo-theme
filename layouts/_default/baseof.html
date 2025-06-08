@@ -36,11 +36,15 @@
     </div>
   </div>
 
-  <main>
+  {{/*  <main>
     <div class="container">
       {{ block "main" . }}{{ end }}
     </div>
-  </main>
+  </main>  */}}
+
+  <div class="page-content-wrapper">
+    {{ block "main" . }}{{ end }}
+  </div>
 
   <div class="site-footer">
     <div class="container footer-inner">
