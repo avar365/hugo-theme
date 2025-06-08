@@ -1,19 +1,6 @@
 {{ define "main" }}
 {{ partial "disclaimer.html" . }}
-<article>
-    <h1 style="text-align: center;">{{ .Title }}</h1>
-    <p style="text-align: center;"><time datetime="{{ .Date }}">{{ .Date.Format "02.01.2006" }}</time></p>
-
-    <div class="post-content">
-        {{ .Content }}
-    </div>
-
-    {{ with .Params.tags }}
-    <p style="margin-top: 2rem;">
-        {{ range . }}
-        <a href="{{ " /tags/" | relURL }}{{ . | urlize }}">#{{ . }}</a>
-        {{ end }}
-    </p>
-    {{ end }}
-</article>
+<div class="container">
+    {{ partial "single-post.html" . }}
+</div>
 {{ end }}

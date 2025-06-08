@@ -1,24 +1,10 @@
 {{ define "main" }}
-{{/*  <h2 style="text-align: center; margin-top: 0;">{{ .Title }}</h2>  */}}
-
-<ul class="project-list">
-    {{ range .Pages }}
-    <li>
-        <div class="project-meta">
-            <a href="{{ .RelPermalink }}" class="project-title">{{ .Title }}</a>
-            <span class="project-date">{{ .Lastmod.Format "02.01.2006" }}</span>
-        </div>
-        {{ with .Params.description }}
-        <p class="project-description">{{ . }}</p>
+<div class="container">
+    <h1 class="page-title">{{ .Title }}</h1>
+    <ul class="standard-list">
+        {{ range .Pages }}
+        {{ partial "list-item.html" . }}
         {{ end }}
-        {{ with .Params.tags }}
-        <div class="project-tags">
-            {{ range . }}
-            <span class="tag-badge">#{{ . }}</span>
-            {{ end }}
-        </div>
-        {{ end }}
-    </li>
-    {{ end }}
-</ul>
+    </ul>
+</div>
 {{ end }}

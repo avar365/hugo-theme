@@ -1,17 +1,10 @@
 {{ define "main" }}
-{{/*  <h2 style="text-align: center; margin-top: 0;">{{ .Title }}</h2>  */}}
-
-<ul class="blog-list">
-    {{ range .Pages }}
-    <li>
-        <div class="blog-meta">
-            <a href="{{ .RelPermalink }}" class="blog-title">{{ .Title }}</a>
-            <span class="blog-date">{{ .Date.Format "02.01.2006" }}</span>
-        </div>
-        {{ with .Params.description }}
-        <p class="blog-description">{{ . }}</p>
+<div class="container">
+    <h1 class="page-title">{{ .Title }}</h1>
+    <ul class="standard-list">
+        {{ range .Pages }}
+        {{ partial "list-item.html" . }}
         {{ end }}
-    </li>
-    {{ end }}
-</ul>
+    </ul>
+</div>
 {{ end }}

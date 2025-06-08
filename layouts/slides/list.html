@@ -1,18 +1,27 @@
 {{ define "main" }}
-
-<div class="slide-grid">
-    {{ range .Pages.ByDate.Reverse }}
-    <div class="slide-card">
-        <a href="{{ .RelPermalink }}" class="slide-link">
-            <div class="slide-title">{{ .Title }}</div>
-            {{ with .Params.description }}
-            <p class="slide-description">{{ . }}</p>
-            {{ end }}
-            <div class="slide-meta">
-                {{ .Date.Format "02.01.2006" }}
+<div class="container">
+    <h1 class="page-title">{{ .Title }}</h1>
+    <div class="card-grid">
+        {{ range .Pages.ByDate.Reverse }}
+        <a href="{{ .RelPermalink }}" class="card-link">
+            <div class="card-item">
+                <h3 class="card-title">{{ .Title }}</h3>
+                {{ with .Params.description }}
+                <p class="card-description">{{ . }}</p>
+                {{ end }}
+                {{ with .Params.tags }}
+                <div class="card-tags">
+                    {{ range . }}
+                    <span class="tag-badge">#{{ . }}</span>
+                    {{ end }}
+                </div>
+                {{ end }}
+                <div class="card-meta">
+                    <span class="card-date">{{ .Date.Format "02.01.2006" }}</span>
+                </div>
             </div>
         </a>
+        {{ end }}
     </div>
-    {{ end }}
 </div>
 {{ end }}

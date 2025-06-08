@@ -1,0 +1,25 @@
+{{/* layouts/partials/single-post.html */}}
+<article class="single-content">
+    <h1 class="single-title">{{ .Title }}</h1>
+
+    {{ if eq .Section "projects" }}
+    {{ with .Params.category }}
+    <p class="single-category-type">Category: <span class="category-badge">{{ . }}</span></p>
+    {{ end }}
+    <p class="single-date">Last updated: <time datetime="{{ .Lastmod }}">{{ .Lastmod.Format "02.01.2006" }}</time></p>
+    {{ else }}
+    <p class="single-date"><time datetime="{{ .Date }}">{{ .Date.Format "02.01.2006" }}</time></p>
+    {{ end }}
+
+    {{ with .Params.tags }}
+    <div class="single-tags">
+        {{ range . }}
+        <a href="{{ " /tags/" | relURL }}{{ . | urlize }}" class="tag-badge-link">#{{ . }}</a>
+        {{ end }}
+    </div>
+    {{ end }}
+
+    <div class="post-content">
+        {{ .Content }}
+    </div>
+</article>

@@ -1,0 +1,28 @@
+{{/* layouts/partials/list-item.html */}}
+<li class="list-item">
+    <a href="{{ .RelPermalink }}" class="list-item-link">
+        <div class="list-item-meta">
+            <h3 class="list-item-title">{{ .Title }}</h3>
+            {{ if eq .Section "projects" }}
+            <span class="list-item-date">Last updated: {{ .Lastmod.Format "02.01.2006" }}</span>
+            {{ else }}
+            <span class="list-item-date">{{ .Date.Format "02.01.2006" }}</span>
+            {{ end }}
+        </div>
+        {{ with .Params.description }}
+        <p class="list-item-description">{{ . }}</p>
+        {{ end }}
+        {{ with .Params.tags }}
+        <div class="list-item-tags">
+            {{ range . }}
+            <span class="tag-badge">#{{ . }}</span>
+            {{ end }}
+        </div>
+        {{ end }}
+        {{ with .Params.category }}
+        <div class="list-item-category">
+            <span class="category-badge">{{ . }}</span>
+        </div>
+        {{ end }}
+    </a>
+</li>
