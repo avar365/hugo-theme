@@ -1,0 +1,15 @@
+{{ define "main" }}
+<header>
+    <h1>{{ .Title }}</h1>
+    <p>Alle Beiträge zum Thema "{{ .Data.Term }}"</p>
+</header>
+<section>
+    <ul>
+        {{ range .Pages }}
+        <li>
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+        </li>
+        {{ end }}
+    </ul>
+</section>
+{{ end }}

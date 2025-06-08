@@ -20,16 +20,12 @@
   <title>{{- block "title" . }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{- end }}</title>
 
   {{- partial "seo_tags.html" . -}}
-  <meta name="referrer" content="no-referrer-when-downgrade" />
-
   {{ with .OutputFormats.Get "rss" -}}
   {{ printf `
   <link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
   {{ end -}}
 
   <link rel="stylesheet" href="/css/styles.css">
-  <link rel="icon" href="/logo/logo.svg" type="image/svg+xml">
-
   {{- partial "custom_head.html" . -}}
 </head>
 
@@ -73,4 +69,5 @@
     });
   </script>
 </body>
+
 </html>

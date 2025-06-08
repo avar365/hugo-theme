@@ -17,20 +17,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {{- partial "favicon.html" . -}}
     <title>{{- block "title" . }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{- end }}</title>
-    
+
     {{- partial "seo_tags.html" . -}}
-    <meta name="referrer" content="no-referrer-when-downgrade" />
-    
     {{ with .OutputFormats.Get "rss" -}}
     {{ printf `
     <link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
     {{ end -}}
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/logo/logo.svg" type="image/svg+xml" />
+
     <link rel="stylesheet" href="/libs/reveal/reveal.css">
     <link rel="stylesheet" href="/libs/reveal/theme/black.css">
     <link rel="stylesheet" href="/css/styles.css">
-    <link rel="icon" href="/logo/logo.svg" type="image/svg+xml">
 </head>
 
 <body>
@@ -43,7 +39,7 @@
     <div class="page-content-wrapper">
         {{ block "main" . }}{{ end }}
     </div>
-    
+
     <div class="site-footer">
         <div class="container footer-inner">
             {{ partial "footer.html" . }}

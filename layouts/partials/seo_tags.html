@@ -1,13 +1,17 @@
-<!-- Primary Meta Tags -->
 <meta name="title" content="{{ with .Title }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}" />
-<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
-<meta name="keywords" content="{{ if .IsPage}}{{ range $index, $tag := .Params.tags }}{{ $tag }},{{ end }}{{ else }}{{ range $plural, $terms := .Site.Taxonomies }}{{ range $term, $val := $terms }}{{ printf "%s," $term }}{{ end }}{{ end }}{{ end }}" />
+<meta name="description"
+    content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
+<meta name="keywords" content="{{ if and .IsPage (isset .Params " tags") }}{{ range $index, $tag :=.Params.tags }}{{
+    $tag }}{{ if ne (add $index 1) (len .Params.tags) }},{{ end }}{{ end }}{{ else }}{{ $allTaxonomyTags
+    :=.Site.Taxonomies.tags.ByCount.Reverse }}{{ range $index, $term :=$allTaxonomyTags }}{{ $term.Term }}{{ if ne (add
+    $index 1) (len $allTaxonomyTags) }},{{ end }}{{ end }}{{ end }}" />
+<meta name="robots" content="index, follow">
+<meta name="referrer" content="no-referrer-when-downgrade" />
 
-<!-- Open Graph / Facebook -->
-{{ template "_internal/opengraph.html" . }}
+<link rel="canonical" href="{{ .Permalink }}" />
 
-<!-- Twitter -->
-{{ template "_internal/twitter_cards.html" . }}
-
-<!-- Microdata -->
-{{ template "_internal/schema.html" . }}
+{{ if .IsTranslated }}
+{{ range .Translations }}
+<link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}" title="{{ .Lang }}" />
+{{ end }}
+{{ end }}
