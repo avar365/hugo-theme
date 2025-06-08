@@ -1,18 +1,27 @@
 <div class="social-icons">
-    <a href="https://github.com/deinname" aria-label="GitHub" target="_blank" rel="noopener">
+    {{ with site.Params.social.github }}
+    <a href="{{ . }}" aria-label="GitHub" target="_blank" rel="noopener">
         {{ readFile "static/icons/bootstrap/github.svg" | safeHTML }}
     </a>
-    <a href="https://linkedin.com/in/deinname" aria-label="LinkedIn" target="_blank" rel="noopener">
+    {{ end }}
+    {{ with site.Params.social.linkedin }}
+    <a href="{{ . }}" aria-label="LinkedIn" target="_blank" rel="noopener">
         {{ readFile "static/icons/bootstrap/linkedin.svg" | safeHTML }}
     </a>
-    <a href="https://bsky.app/profile/deinname.bsky.social" aria-label="Bluesky" target="_blank" rel="noopener">
+    {{ end }}
+    {{ with site.Params.social.bluesky }}
+    <a href="{{ . }}" aria-label="Bluesky" target="_blank" rel="noopener">
         {{ readFile "static/icons/bootstrap/bluesky.svg" | safeHTML }}
     </a>
-    <a href="https://discord.gg/deinserver" aria-label="Discord" target="_blank" rel="noopener">
+    {{ end }}
+    {{ with site.Params.social.discord }}
+    <a href="{{ . }}" aria-label="Discord" target="_blank" rel="noopener">
         {{ readFile "static/icons/bootstrap/discord.svg" | safeHTML }}
     </a>
-    <a href="mailto:du@example.com" aria-label="E-Mail">
+    {{ end }}
+    {{ with site.Params.social.email }}
+    <a href="{{ . }}" aria-label="E-Mail">
         {{ readFile "static/icons/bootstrap/mail.svg" | safeHTML }}
     </a>
+    {{ end }}
 </div>
-  
