@@ -6,14 +6,6 @@
     <ul>
         {{ range .Data.Terms.ByCount }}
         <li>
-            {{/*
-            Wir müssen die URL manuell konstruieren, da OrderedTaxonomyEntry
-            keine direkte .URL oder .Permalink Eigenschaft hat.
-            $.Data.Plural greift auf den Plural-Namen der Taxonomie
-            (z.B. "tags") aus dem übergeordneten Kontext zu.
-            .Term ist der Name des aktuellen Begriffs im Loop.
-            urlize konvertiert den String in ein URL-freundliches Format.
-            */}}
             <a href="/{{ $.Data.Plural | urlize }}/{{ .Term | urlize }}/">{{ .Term }}</a> ({{ .Count }})
         </li>
         {{ end }}

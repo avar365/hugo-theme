@@ -14,7 +14,7 @@
     {{ with .Params.tags }}
     <div class="single-tags">
         {{ range . }}
-        <a href="{{ " /tags/" | relURL }}{{ . | urlize }}" class="tag-badge-link">#{{ . }}</a>
+        <a href="{{ "/tags/" | relURL }}{{ . | urlize }}" class="tag-badge-link">#{{ . }}</a>
         {{ end }}
     </div>
     {{ end }}

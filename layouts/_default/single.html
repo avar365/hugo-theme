@@ -19,7 +19,7 @@
   {{ with .Params.tags }}
   <p style="margin-top: 2rem;">
     {{ range . }}
-    <a href="{{ " tags/" | relURL }}{{ . | urlize }}">#{{ . }}</a>
+    <a href="{{ "tags/" | relURL }}{{ . | urlize }}">#{{ . }}</a>
     {{ end }}
   </p>
   {{ end }}
