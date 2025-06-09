@@ -4,7 +4,7 @@
 name = "hugo-theme"
 license = "MIT"
 licenselink = "https://github.com/avar365/hugo-theme/blob/master/LICENSE"
-description = "A Hugo theme based on »Bear Blog«"
+description = "My Hugo theme"
 homepage = "https://github.com/avar365/hugo-theme"
 demosite = ""
 tags = [
@@ -17,13 +17,8 @@ tags = [
   "reading",
   "dark mode",
 ]
-features = ["favicon", "seo", "rss", "dark mode"]
+features = ["favicon", "seo", "rss", "dark mode", "chart.js", "reveal.js"]
 min_version = "v0.110.0"
 
 [author]
 name = "Andreas Varwig"
-
-[original]
-name = "ʕ•ᴥ•ʔ Bear Blog"
-homepage = "https://bearblog.dev"
-repo = "https://github.com/HermanMartinus/bearblog"
