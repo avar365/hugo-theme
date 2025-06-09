@@ -1,27 +1,7 @@
 {{ define "main" }}
-<article style="margin-top: 0;">
-  {{ if .Title }}
-  <h1 style="text-align: center; margin-top: 0;">{{ .Title }}</h1>
-  {{ end }}
-
-  {{ if eq .Type "posts" }}
-  <p style="text-align: center; margin-top: 0.5rem;">
-    <i>
-      <time datetime="{{ .Date }}">{{ .Date.Format "02.01.2006" }}</time>
-    </i>
-  </p>
-  {{ end }}
-
-  <div class="post-content">
+ 
+  <div class="container">
     {{ .Content }}
   </div>
 
-  {{ with .Params.tags }}
-  <p style="margin-top: 2rem;">
-    {{ range . }}
-    <a href="{{ "tags/" | relURL }}{{ . | urlize }}">#{{ . }}</a>
-    {{ end }}
-  </p>
-  {{ end }}
-</article>
 {{ end }}

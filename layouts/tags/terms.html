@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div class="container">
+    <h1 class="page-title">Alle Tags</h1>
+    <ul class="standard-list">
+        {{ range .Data.Terms.ByCount }}
+        <li class="list-item">
+            <a class="list-item-link" href="{{ .Page.RelPermalink }}">
+                <span class="list-item-title">{{ .Term }}</span>
+                <span class="list-item-date">({{ .Count }} Beiträge)</span>
+            </a>
+        </li>
+        {{ end }}
+    </ul>
+</div>
+{{ end }}

@@ -1,14 +1,13 @@
 {{ define "main" }}
 <header>
     <h1>{{ .Title }}</h1>
-    <p>Alle Beiträge zum Thema "{{ .Data.Term }}"</p>
+    <p>Alle Beiträge zum Thema "{{ .Title }}"</p>
 </header>
 <section>
     <ul>
-        {{ range .Pages }}
-        <li>
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
-        </li>
+        {{ $tag := .Title }}
+        {{ range where .Site.RegularPages "Params.tags" "intersect" (slice $tag) }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
         {{ end }}
     </ul>
 </section>

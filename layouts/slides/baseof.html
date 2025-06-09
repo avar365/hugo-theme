@@ -46,20 +46,7 @@
         </div>
     </div>
 
-    <script type="module">
-        import Reveal from '/libs/reveal/reveal.esm.js';
-        import Markdown from '/libs/reveal/plugin/markdown/markdown.esm.js';
-        import Highlight from '/libs/reveal/plugin/highlight/highlight.esm.js';
-        import Notes from '/libs/reveal/plugin/notes/notes.esm.js';
-
-        Reveal.initialize({
-            hash: true,
-            plugins: [Markdown, Highlight, Notes],
-            markdown: {
-                smartypants: true
-            }
-        });
-    </script>
+    <script type="module" src="/js/reveal-init.js"></script>
     <script src="/js/theme-toggle.js" defer></script>
 </body>
 

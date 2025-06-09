@@ -1,0 +1,11 @@
+{{ define "main" }}
+<div class="container">
+    <h1 class="page-title">{{ .Title }}</h1>
+    <p class="text-center">Alle Beiträge zum Thema <strong>{{ .Title }}</strong></p>
+    <ul class="standard-list">
+        {{ range .Pages }}
+        {{ partial "list-item.html" . }}
+        {{ end }}
+    </ul>
+</div>
+{{ end }}
