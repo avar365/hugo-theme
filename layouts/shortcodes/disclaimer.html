@@ -1,0 +1,20 @@
+{{- $title := .Get "title" | default "Important Note About This Content" -}}
+{{- $inner := .Inner | strings.TrimSpace -}}
+{{- $content := cond (gt (len $inner) 0) $inner `
+The information presented here reflects the state of knowledge at the time of publication and may contain errors or 
+become outdated over time. I strive to cite all sources and software versions used, but I cannot guarantee the accuracy, 
+completeness, or continued functionality of the examples provided in future environments. Please be aware that applying 
+this content to your specific use case is your own responsibility.
+` -}}
+
+<div class="disclaimer-wrapper">
+    <input type="checkbox" id="disclaimer-toggle-{{ .Ordinal }}" class="disclaimer-toggle-checkbox"
+        aria-controls="disclaimer-content-{{ .Ordinal }}">
+    <label for="disclaimer-toggle-{{ .Ordinal }}" class="disclaimer-header" role="button" aria-expanded="false">
+        <span class="disclaimer-title">{{ $title }}</span>
+        <span class="disclaimer-icon">▼</span>
+    </label>
+    <div id="disclaimer-content-{{ .Ordinal }}" class="disclaimer-content" aria-hidden="true">
+        <p>{{ $content | safeHTML }}</p>
+    </div>
+</div>
