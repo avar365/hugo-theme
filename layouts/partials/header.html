@@ -1,24 +1,32 @@
+<!-- Menü-Toggle für mobile Navigation -->
+<input type="checkbox" id="menu-toggle" class="menu-toggle" hidden>
+
 <header class="site-header">
   <div class="header-inner">
-    <a href="{{ "/" | relURL }}" class="site-title" style="display: flex; align-items: center; gap: 0.5rem;">
-      {{ $logoPath := "static/logo/logo.svg" }}
-      {{ readFile "static/logo/logo.svg" | safeHTML }}
-      {{ .Site.Title }}
-    </a>
+    <!-- Linker Bereich: Logo + Seitentitel -->
+    <div class="header-left">
+      <a href="{{ " /" | relURL }}" class="site-title">
+        {{ readFile "static/logo/logo.svg" | safeHTML }}
+        {{ .Site.Title }}
+      </a>
+    </div>
 
-    <input type="checkbox" id="menu-toggle" class="menu-toggle">
-    <label for="menu-toggle" class="burger">&#9776;</label>
-
+    <!-- Navigation -->
     <nav class="main-nav">
       {{ partial "nav.html" . }}
     </nav>
 
-    <div class="theme-toggle-wrapper">
-      <input type="checkbox" id="theme-toggle" />
-      <label for="theme-toggle" class="theme-toggle-slider">
-        <img src="/icons/bootstrap/sun.svg" class="toggle-icon icon-sun" alt="Light mode">
-        <img src="/icons/bootstrap/moon.svg" class="toggle-icon icon-moon" alt="Dark mode">
-      </label>
+    <!-- Rechter Bereich: Burger und Theme-Toggle -->
+    <div class="header-right">
+      <label for="menu-toggle" class="burger">&#9776;</label>
+
+      <div class="theme-toggle-wrapper">
+        <input type="checkbox" id="theme-toggle" />
+        <label for="theme-toggle" class="theme-toggle-slider">
+          <img src="/icons/bootstrap/sun.svg" class="toggle-icon icon-sun" alt="Light mode">
+          <img src="/icons/bootstrap/moon.svg" class="toggle-icon icon-moon" alt="Dark mode">
+        </label>
       </div>
+    </div>
   </div>
 </header>
