@@ -29,6 +29,8 @@
     {{ if eq .Section "slides" }}
     <link rel="stylesheet" href="/libs/reveal/reveal.css">
     <link rel="stylesheet" href="/libs/reveal/theme/black.css">
+    <link rel="stylesheet" href="/libs/reveal/plugin/print-pdf/print-pdf.css" media="print">
+    <link rel="stylesheet" href="/css/reveal-print.css" media="print">
     {{ end }}
 
     {{ $style := resources.Get "scss/main.scss" | toCSS | minify | fingerprint }}
