@@ -16,7 +16,9 @@
     <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     {{- partial "favicon.html" . -}}
+
     <title>{{- block "title" . }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{- end }}</title>
 
     {{- partial "seo_tags.html" . -}}
@@ -57,10 +59,13 @@
     {{ if eq .Section "slides" }}
     <script type="module" src="/js/reveal-init.js"></script>
     {{ end }}
+    
+    <script src="/libs/chartjs/chart.umd.min.js" defer></script>
+    {{ $charts := resources.Get "js/charts-init.js" | js.Build | minify | fingerprint }}
+    <script type="module" src="{{ $charts.RelPermalink }}" integrity="{{ $charts.Data.Integrity }}"></script>
 
     <script src="/js/theme-toggle.js" defer></script>
     <script src="/js/disclaimer-toggle.js" defer></script>
-
 </body>
 
 </html>
